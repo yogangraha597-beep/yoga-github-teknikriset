@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <!-- PENTING: Meta tag untuk responsif -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="HandheldFriendly" content="true">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Entrepreneurship - Materi Perkuliahan</title>
@@ -8,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         /* Reset dan Base Styles */
         * {
@@ -18,10 +23,10 @@
 
         :root {
             --primary-color: #1a237e;
-            --secondary-color: #8c5e14;
+            --secondary-color: #4a148c;
             --accent-color: #00acc1;
             --light-color: #f3e5f5;
-            --dark-color: #92781b;
+            --dark-color: #311b92;
             --text-color: #333;
             --border-radius: 12px;
             --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -30,12 +35,14 @@
             --gradient-accent: linear-gradient(135deg, var(--accent-color), #26c6da);
         }
 
-        body {
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
             color: var(--text-color);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
@@ -50,15 +57,21 @@
             padding: 0 20px;
         }
 
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+
         /* Header Styles */
         header {
             background: var(--gradient-primary);
             color: white;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             box-shadow: var(--box-shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            width: 100%;
         }
 
         .header-content {
@@ -71,42 +84,45 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
         }
 
         .logo-icon {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             color: var(--light-color);
             background: var(--gradient-accent);
-            padding: 12px;
+            padding: 10px;
             border-radius: 50%;
+            flex-shrink: 0;
         }
 
-        .logo-text h1 {
-            font-size: 2rem;
-            margin-bottom: 5px;
-            background: linear-gradient(to right, #ffffff, var(--light-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+       .logo-text h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: var(--accent-color); /* Warna solid saja */
+    line-height: 1.2;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
 
         .logo-text p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.9;
         }
 
         .student-info {
             background-color: rgba(255, 255, 255, 0.15);
-            padding: 15px 25px;
+            padding: 12px 20px;
             border-radius: var(--border-radius);
             text-align: right;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            flex-shrink: 0;
         }
 
         .student-info h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 5px;
+            line-height: 1.2;
         }
 
         /* Navigation Styles */
@@ -114,31 +130,34 @@
             background-color: white;
             border-bottom: 1px solid #eee;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            width: 100%;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--primary-color);
             font-weight: 600;
-            padding: 10px 16px;
+            padding: 8px 14px;
             border-radius: 30px;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            font-size: 0.95rem;
+            white-space: nowrap;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -154,43 +173,43 @@
             cursor: pointer;
             color: var(--primary-color);
             background: #f0f0f0;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
+            border: none;
+            min-width: 44px;
+            min-height: 44px;
         }
 
-        /* Main Content - REVISI: Sidebar di kiri, konten di kanan */
+        /* Main Content */
         .main-content {
             display: grid;
-            grid-template-columns: 300px 1fr; /* Sidebar di kiri, konten di kanan */
-            gap: 2.5rem;
-            margin: 3rem 0;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+            width: 100%;
         }
 
-        @media (max-width: 992px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Sidebar - REVISI: Dipindah ke kiri */
+        /* Sidebar */
         .sidebar {
             background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 1.8rem;
+            padding: 1.5rem;
             height: fit-content;
             position: sticky;
             top: 140px;
+            width: 100%;
         }
 
         .sidebar h2 {
             color: var(--primary-color);
-            margin-bottom: 1.8rem;
-            padding-bottom: 12px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
             border-bottom: 3px solid var(--accent-color);
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1.4rem;
         }
 
         .meeting-list {
@@ -198,10 +217,11 @@
             max-height: 70vh;
             overflow-y: auto;
             padding-right: 10px;
+            width: 100%;
         }
 
         .meeting-list::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
 
         .meeting-list::-webkit-scrollbar-track {
@@ -215,21 +235,24 @@
         }
 
         .meeting-item {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             border-radius: var(--border-radius);
             overflow: hidden;
             transition: var(--transition);
             border: 1px solid #eee;
+            width: 100%;
         }
 
         .meeting-item a {
             display: flex;
             align-items: center;
-            padding: 15px;
+            padding: 12px;
             text-decoration: none;
             color: var(--text-color);
             background-color: #f8f9fa;
             transition: var(--transition);
+            width: 100%;
+            min-height: 60px;
         }
 
         .meeting-item a:hover {
@@ -245,29 +268,33 @@
         }
 
         .meeting-icon {
-            margin-right: 12px;
-            font-size: 1.2rem;
+            margin-right: 10px;
+            font-size: 1.1rem;
             background: var(--gradient-accent);
             color: white;
-            padding: 8px;
+            padding: 7px;
             border-radius: 8px;
-            min-width: 40px;
+            min-width: 38px;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .meeting-title {
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
-        /* Content Area - REVISI: Dipindah ke kanan */
+        /* Content Area */
         .content {
             background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 2.5rem;
-            min-height: 600px;
+            padding: 2rem;
+            min-height: 500px;
             animation: fadeIn 0.5s ease;
+            width: 100%;
         }
 
         @keyframes fadeIn {
@@ -279,43 +306,50 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.2rem;
             border-bottom: 2px solid #eee;
+            width: 100%;
+            flex-wrap: wrap;
         }
 
         .meeting-header h2 {
             color: var(--primary-color);
-            font-size: 2rem;
+            font-size: 1.8rem;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            line-height: 1.3;
+            word-wrap: break-word;
         }
 
         .meeting-number {
             background: var(--gradient-accent);
             color: white;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 30px;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             box-shadow: 0 4px 12px rgba(0, 172, 193, 0.3);
+            flex-shrink: 0;
         }
 
         .materials {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
+            width: 100%;
         }
 
         .material-card {
             border-left: 5px solid var(--accent-color);
-            padding: 2rem;
+            padding: 1.5rem;
             background-color: #f8fafc;
             border-radius: 0 var(--border-radius) var(--border-radius) 0;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         .material-card::before {
@@ -341,46 +375,56 @@
 
         .material-card h3 {
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.4rem;
+            gap: 10px;
+            font-size: 1.3rem;
+            line-height: 1.3;
         }
 
         .material-card h3 i {
             color: var(--accent-color);
             background: #e0f7fa;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 8px;
+            border-radius: 8px;
+            flex-shrink: 0;
         }
 
         .material-card p {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #555;
-            font-size: 1.05rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            word-wrap: break-word;
         }
 
         .resources {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 15px;
+            width: 100%;
         }
 
         .resource-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 16px;
             background-color: white;
             border-radius: 30px;
             text-decoration: none;
             color: var(--primary-color);
             border: 2px solid #ddd;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: var(--transition);
+            min-height: 44px;
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
         }
 
         .resource-btn:hover {
@@ -395,22 +439,25 @@
         footer {
             background: var(--gradient-primary);
             color: white;
-            padding: 3rem 0 1.5rem;
-            margin-top: 4rem;
+            padding: 2.5rem 0 1.5rem;
+            margin-top: 3rem;
+            width: 100%;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            width: 100%;
         }
 
         .footer-section h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
             position: relative;
-            padding-bottom: 12px;
+            padding-bottom: 10px;
+            line-height: 1.3;
         }
 
         .footer-section h3::after {
@@ -424,9 +471,10 @@
         }
 
         .footer-section p {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             opacity: 0.9;
-            line-height: 1.7;
+            line-height: 1.6;
+            word-wrap: break-word;
         }
 
         .contact-list {
@@ -434,34 +482,39 @@
         }
 
         .contact-list li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            word-wrap: break-word;
         }
 
         .contact-list li i {
             color: var(--accent-color);
-            font-size: 1.1rem;
+            font-size: 1rem;
+            flex-shrink: 0;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.15);
             opacity: 0.8;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            width: 100%;
         }
 
         /* Homepage */
         .welcome-section {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 3rem 1.5rem;
             background: linear-gradient(135deg, #f3e5f5, #e1f5fe);
             border-radius: var(--border-radius);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         .welcome-section::before {
@@ -477,47 +530,54 @@
 
         .welcome-section h1 {
             color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            font-size: 2.2rem;
             position: relative;
+            line-height: 1.2;
+            word-wrap: break-word;
         }
 
         .welcome-section p {
             max-width: 800px;
-            margin: 0 auto 2rem;
-            font-size: 1.15rem;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
             color: #555;
             position: relative;
+            line-height: 1.5;
+            word-wrap: break-word;
         }
 
         .featured-meetings {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            width: 100%;
         }
 
         .featured-card {
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
             border: 1px solid #eee;
+            width: 100%;
         }
 
         .featured-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .featured-card h3 {
             color: var(--primary-color);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.3rem;
+            gap: 10px;
+            font-size: 1.2rem;
+            line-height: 1.3;
         }
 
         .featured-card h3 i {
@@ -526,114 +586,37 @@
 
         .stats-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2.5rem;
+            width: 100%;
         }
 
         .stat-card {
             background: var(--gradient-primary);
             color: white;
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: var(--border-radius);
             text-align: center;
             box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
+            width: 100%;
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
-            }
-            
-            .student-info {
-                text-align: center;
-                width: 100%;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 85%;
-                height: 100vh;
-                background-color: white;
-                flex-direction: column;
-                padding: 3rem 2rem;
-                box-shadow: var(--box-shadow);
-                transition: var(--transition);
-                z-index: 1000;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin-bottom: 1.2rem;
-            }
-            
-            .close-menu {
-                position: absolute;
-                top: 25px;
-                right: 25px;
-                font-size: 1.8rem;
-                cursor: pointer;
-                color: var(--primary-color);
-                background: #f0f0f0;
-                padding: 5px 12px;
-                border-radius: 8px;
-            }
-            
-            .overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                z-index: 999;
-                display: none;
-            }
-            
-            .overlay.active {
-                display: block;
-            }
-            
-            .meeting-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-            
-            .welcome-section h1 {
-                font-size: 2.2rem;
-            }
-            
-            .content {
-                padding: 1.8rem;
-            }
+            margin-bottom: 8px;
+            line-height: 1;
         }
 
         /* Progress Bar */
         .progress-container {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             background: #f0f0f0;
             border-radius: 30px;
             height: 10px;
             overflow: hidden;
+            width: 100%;
         }
 
         .progress-bar {
@@ -643,66 +626,24 @@
             transition: width 0.5s ease;
         }
 
-        /* Toggle Button untuk Sidebar di Mobile - REVISI: untuk sidebar kiri */
-        .sidebar-toggle {
-            display: none;
-            background: var(--gradient-primary);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 992px) {
-            .sidebar-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-            }
-            
-            .sidebar {
-                display: none;
-                order: 2; /* Di mobile, sidebar akan muncul di bawah konten */
-            }
-            
-            .sidebar.active {
-                display: block;
-            }
-            
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Homepage layout khusus untuk sidebar kiri */
-        #homePage .sidebar {
-            display: none;
-        }
-        
-        #homePage .main-content {
-            grid-template-columns: 1fr;
-        }
-
-        /* Tombol navigasi pertemuan sebelumnya/selanjutnya */
+        /* Navigation Buttons */
         .meeting-navigation {
             display: flex;
             justify-content: space-between;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
             border-top: 1px solid #eee;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
         
         .nav-btn {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
             background: var(--gradient-primary);
             color: white;
             border: none;
@@ -710,6 +651,10 @@
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
+            min-height: 44px;
+            font-size: 0.95rem;
+            flex: 1;
+            min-width: 140px;
         }
         
         .nav-btn:hover {
@@ -735,6 +680,466 @@
         .nav-btn:disabled:hover {
             transform: none;
             box-shadow: none;
+        }
+
+        /* Mobile Menu Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+            background: #f0f0f0;
+            padding: 5px 10px;
+            border-radius: 8px;
+            border: none;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ========== RESPONSIVE STYLES ========== */
+        
+        /* Tablet Devices (768px - 1024px) */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .main-content {
+                grid-template-columns: 250px 1fr;
+                gap: 1.5rem;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .welcome-section {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+            
+            .featured-meetings {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        /* Mobile Devices (max-width: 768px) */
+        @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden;
+                position: relative;
+            }
+            
+            .container {
+                padding: 0 12px;
+                width: 100%;
+            }
+            
+            /* Header Mobile */
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+            
+            .logo {
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .logo-icon {
+                font-size: 1.8rem;
+                padding: 8px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+            
+            .student-info {
+                width: 100%;
+                text-align: center;
+                padding: 10px 15px;
+                margin-top: 0.5rem;
+            }
+            
+            .student-info h3 {
+                font-size: 1.1rem;
+            }
+            
+            /* Navigation Mobile */
+            .navbar {
+                padding: 0.5rem 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 85%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 2rem 1.5rem;
+                box-shadow: var(--box-shadow);
+                transition: var(--transition);
+                z-index: 1000;
+                overflow-y: auto;
+                gap: 0.5rem;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .nav-links a {
+                width: 100%;
+                padding: 12px 15px;
+                font-size: 0.95rem;
+                justify-content: flex-start;
+                min-height: 44px;
+            }
+            
+            /* Main Content Mobile */
+            .main-content {
+                grid-template-columns: 1fr !important;
+                margin: 1.2rem 0;
+                gap: 1.2rem;
+            }
+            
+            /* Sidebar Mobile */
+            .sidebar {
+                width: 100%;
+                padding: 1.2rem;
+                position: relative;
+                top: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .sidebar h2 {
+                font-size: 1.3rem;
+                margin-bottom: 1.2rem;
+            }
+            
+            .meeting-list {
+                max-height: 350px;
+            }
+            
+            .meeting-item a {
+                padding: 10px;
+                min-height: 55px;
+            }
+            
+            .meeting-icon {
+                font-size: 1rem;
+                padding: 6px;
+                min-width: 34px;
+            }
+            
+            /* Content Area Mobile */
+            .content {
+                padding: 1.2rem;
+                min-height: auto;
+            }
+            
+            .meeting-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 1.5rem;
+            }
+            
+            .meeting-header h2 {
+                font-size: 1.4rem;
+                width: 100%;
+            }
+            
+            .meeting-number {
+                padding: 6px 14px;
+                font-size: 1rem;
+                align-self: flex-start;
+            }
+            
+            /* Material Cards Mobile */
+            .material-card {
+                padding: 1.2rem;
+            }
+            
+            .material-card h3 {
+                font-size: 1.2rem;
+                flex-wrap: wrap;
+            }
+            
+            .material-card h3 i {
+                padding: 6px;
+                font-size: 0.9rem;
+            }
+            
+            /* Resources Mobile */
+            .resources {
+                gap: 8px;
+            }
+            
+            .resource-btn {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+                min-width: 100px;
+                flex: 1 1 calc(50% - 8px);
+            }
+            
+            /* Welcome Section Mobile */
+            .welcome-section {
+                padding: 2rem 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .welcome-section h1 {
+                font-size: 1.6rem;
+            }
+            
+            .welcome-section p {
+                font-size: 1rem;
+            }
+            
+            /* Featured Cards Mobile */
+            .featured-meetings {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .featured-card {
+                padding: 1.2rem;
+            }
+            
+            .featured-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            /* Stats Container Mobile */
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+            
+            .stat-card {
+                padding: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            /* Footer Mobile */
+            footer {
+                padding: 2rem 0 1rem;
+                margin-top: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .footer-section {
+                margin-bottom: 1.5rem;
+            }
+            
+            .footer-section h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .copyright {
+                font-size: 0.85rem;
+                padding-top: 1rem;
+            }
+            
+            /* Navigation Buttons Mobile */
+            .meeting-navigation {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 2rem;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 12px;
+            }
+            
+            /* Achievement Cards */
+            #achievements {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            /* Lists */
+            ul, ol {
+                padding-left: 20px;
+            }
+            
+            li {
+                margin-bottom: 5px;
+                word-wrap: break-word;
+            }
+            
+            /* Hide sidebar on non-materi pages */
+            #homePage .sidebar,
+            #progressPage .sidebar,
+            #aboutPage .sidebar,
+            #contactPage .sidebar {
+                display: none;
+            }
+        }
+
+        /* Small Mobile Devices (max-width: 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
+            
+            .logo-text p {
+                font-size: 0.8rem;
+            }
+            
+            .student-info {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .student-info h3 {
+                font-size: 1rem;
+            }
+            
+            .meeting-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .material-card {
+                padding: 1rem;
+            }
+            
+            .resource-btn {
+                flex: 1 1 100%;
+                margin-bottom: 5px;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .welcome-section h1 {
+                font-size: 1.4rem;
+            }
+            
+            .welcome-section p {
+                font-size: 0.95rem;
+            }
+            
+            .featured-card h3 {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                width: 80%;
+            }
+        }
+
+        /* Very Small Devices (max-width: 320px) */
+        @media (max-width: 320px) {
+            .container {
+                padding: 0 8px;
+            }
+            
+            .logo {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .logo-icon {
+                font-size: 1.5rem;
+                padding: 6px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+            
+            .welcome-section {
+                padding: 1.5rem 0.8rem;
+            }
+            
+            .welcome-section h1 {
+                font-size: 1.3rem;
+            }
+            
+            .resource-btn {
+                padding: 8px;
+                font-size: 0.8rem;
+            }
+            
+            .material-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .featured-card {
+                padding: 1rem;
+            }
+        }
+
+        /* Fix untuk input di mobile (mencegah zoom) */
+        @media (max-width: 768px) {
+            input, select, textarea {
+                font-size: 16px !important;
+            }
+        }
+
+        /* Clearfix */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
         }
     </style>
 </head>
@@ -1245,6 +1650,8 @@
         let currentMeetingId = 1;
         let completedMeetingsList = JSON.parse(localStorage.getItem('completedMeetings')) || [];
 
+        
+
         // Inisialisasi
         document.addEventListener('DOMContentLoaded', function() {
             renderMeetingList();
@@ -1253,6 +1660,31 @@
             showHomePage();
             setupEventListeners();
         });
+
+        // Tambahkan ini di JavaScript Anda untuk handle resize
+window.addEventListener('resize', function() {
+    // Reset sidebar state pada resize
+    if (window.innerWidth > 768) {
+        closeMobileMenu();
+        document.getElementById('sidebar').style.display = 'block';
+    } else {
+        // Pada mobile, sembunyikan sidebar default
+        if (currentPage === 'home' || currentPage === 'progress' || 
+            currentPage === 'about' || currentPage === 'contact') {
+            document.getElementById('sidebar').style.display = 'none';
+        }
+    }
+});
+
+// Prevent zoom on double tap (iOS)
+var lastTouchEnd = 0;
+document.addEventListener('touchend', function(event) {
+    var now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
 
         // Setup event listeners
         function setupEventListeners() {
