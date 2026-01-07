@@ -3,99 +3,1736 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UAS Pemrograman Web - Yoga Nugraha</title>
+    <title>Digital Entrepreneurship - Materi Perkuliahan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Reset dan Base Styles */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #00a2ff;
-            color: white;
-            text-align: center;
-            padding: 20px;
+
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #8c5e14;
+            --accent-color: #00acc1;
+            --light-color: #f3e5f5;
+            --dark-color: #92781b;
+            --text-color: #333;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, var(--accent-color), #26c6da);
         }
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h1, h2, h3 {
-            text-align: center;
-        }
-        p {
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--text-color);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        ul {
-            padding-left: 20px;
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
-        li {
-            margin: 8px 0;
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #007bff;
+
+        /* Header Styles */
+        header {
+            background: var(--gradient-primary);
             color: white;
+            padding: 2rem 0;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.8rem;
+            color: var(--light-color);
+            background: var(--gradient-accent);
+            padding: 12px;
+            border-radius: 50%;
+        }
+
+        .logo-text h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #ffffff, var(--light-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .student-info {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            text-align: right;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .student-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 10px 16px;
+            border-radius: 30px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.2);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* Main Content - REVISI: Sidebar di kiri, konten di kanan */
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr; /* Sidebar di kiri, konten di kanan */
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar - REVISI: Dipindah ke kiri */
+        .sidebar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.8rem;
+            height: fit-content;
+            position: sticky;
+            top: 140px;
+        }
+
+        .sidebar h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.8rem;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .meeting-list {
+            list-style: none;
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .meeting-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .meeting-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .meeting-list::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .meeting-item {
+            margin-bottom: 12px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .meeting-item a {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            text-decoration: none;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+            transition: var(--transition);
+        }
+
+        .meeting-item a:hover {
+            background: var(--gradient-primary);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .meeting-item.active a {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.2);
+        }
+
+        .meeting-icon {
+            margin-right: 12px;
+            font-size: 1.2rem;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 8px;
+            border-radius: 8px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .meeting-title {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Content Area - REVISI: Dipindah ke kanan */
+        .content {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2.5rem;
+            min-height: 600px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .meeting-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .meeting-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .meeting-number {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0, 172, 193, 0.3);
+        }
+
+        .materials {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .material-card {
+            border-left: 5px solid var(--accent-color);
+            padding: 2rem;
+            background-color: #f8fafc;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .material-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+            transform: translateY(-100%);
+            transition: var(--transition);
+        }
+
+        .material-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .material-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .material-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+        }
+
+        .material-card h3 i {
+            color: var(--accent-color);
+            background: #e0f7fa;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .material-card p {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .resources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
             margin-top: 20px;
+        }
+
+        .resource-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background-color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            color: var(--primary-color);
+            border: 2px solid #ddd;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .resource-btn:hover {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-section p {
+            margin-bottom: 1.2rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-list li i {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* Homepage */
+        .welcome-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f3e5f5, #e1f5fe);
+            border-radius: var(--border-radius);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="%234a148c" opacity="0.05"/></svg>');
+            background-size: cover;
+        }
+
+        .welcome-section h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
+            position: relative;
+        }
+
+        .welcome-section p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.15rem;
+            color: #555;
+            position: relative;
+        }
+
+        .featured-meetings {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .featured-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .featured-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+        }
+
+        .featured-card h3 i {
+            color: var(--accent-color);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+            
+            .student-info {
+                text-align: center;
+                width: 100%;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 85%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 3rem 2rem;
+                box-shadow: var(--box-shadow);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin-bottom: 1.2rem;
+            }
+            
+            .close-menu {
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                font-size: 1.8rem;
+                cursor: pointer;
+                color: var(--primary-color);
+                background: #f0f0f0;
+                padding: 5px 12px;
+                border-radius: 8px;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                display: none;
+            }
+            
+            .overlay.active {
+                display: block;
+            }
+            
+            .meeting-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .welcome-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content {
+                padding: 1.8rem;
+            }
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-top: 2rem;
+            background: #f0f0f0;
+            border-radius: 30px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-accent);
+            border-radius: 30px;
+            transition: width 0.5s ease;
+        }
+
+        /* Toggle Button untuk Sidebar di Mobile - REVISI: untuk sidebar kiri */
+        .sidebar-toggle {
+            display: none;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .sidebar {
+                display: none;
+                order: 2; /* Di mobile, sidebar akan muncul di bawah konten */
+            }
+            
+            .sidebar.active {
+                display: block;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Homepage layout khusus untuk sidebar kiri */
+        #homePage .sidebar {
+            display: none;
+        }
+        
+        #homePage .main-content {
+            grid-template-columns: 1fr;
+        }
+
+        /* Tombol navigasi pertemuan sebelumnya/selanjutnya */
+        .meeting-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 35, 126, 0.3);
+        }
+        
+        .nav-btn.prev {
+            background: #f0f0f0;
+            color: var(--text-color);
+        }
+        
+        .nav-btn.prev:hover {
+            background: #e0e0e0;
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .nav-btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Digital Entrepreneurship</h1>
+                    <p>Materi Perkuliahan - Semester 5</p>
+                </div>
+            </div>
+            <div class="student-info">
+                <h3>Yoga Nugraha</h3>
+                <p>NIM: 231011402569</p>
+            </div>
+        </div>
+    </header>
 
-<header>
-    <h1>Materi Pemrograman Web</h1>
-    <p>Ujian Akhir Semester</p>
-    <p><strong>Nama:</strong> Yoga Nugraha</p>
-</header>
+    <!-- Navigation -->
+    <nav>
+        <div class="container navbar">
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li class="close-menu" id="closeMenu"><i class="fas fa-times"></i></li>
+                <li><a href="#" class="active" id="homeLink"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="#" id="materiLink"><i class="fas fa-book"></i> Materi Perkuliahan</a></li>
+                <li><a href="#" id="progressLink"><i class="fas fa-chart-line"></i> Progress Belajar</a></li>
+                <li><a href="#" id="aboutLink"><i class="fas fa-info-circle"></i> Tentang</a></li>
+                <li><a href="#" id="contactLink"><i class="fas fa-envelope"></i> Kontak</a></li>
+            </ul>
+        </div>
+        <div class="overlay" id="overlay"></div>
+    </nav>
 
-<div class="container">
-    <h2>Deskripsi Mata Kuliah</h2>
-    <p>
-        Website ini berisi materi perkuliahan Pemrograman Web yang disusun berdasarkan
-        pertemuan. Website ini dibuat sebagai media pembelajaran statis tanpa database
-        dan merupakan tugas UAS.
-    </p>
+    <!-- Main Content - REVISI: Sidebar di kiri, konten di kanan -->
+    <div class="container main-content">
+        <!-- Sidebar (Visible on Materi Page) - REVISI: Dipindah ke kiri -->
+        <aside class="sidebar" id="sidebar">
+            <h2><i class="fas fa-list-ol"></i> 14 Pertemuan</h2>
+            <ul class="meeting-list" id="meetingList">
+                <!-- Daftar pertemuan akan diisi dengan JavaScript -->
+            </ul>
+        </aside>
 
-    <h2>Daftar Materi Perkuliahan</h2>
+        <!-- Content Area - REVISI: Dipindah ke kanan -->
+        <main class="content" id="contentArea">
+            <!-- Halaman Beranda -->
+            <div id="homePage">
+                <section class="welcome-section">
+                    <h1>Selamat Datang di Digital Entrepreneurship</h1>
+                    <p>Website ini berisi materi perkuliahan mata kuliah Digital Entrepreneurship untuk semester 5. Jelajahi 14 pertemuan yang telah disusun secara terstruktur untuk membekali Anda dengan pengetahuan dan keterampilan kewirausahaan di era digital.</p>
+                    <div class="resources">
+                        <a href="#" class="resource-btn" id="startLearningBtn" style="background: var(--gradient-primary); color: white; border: none; padding: 15px 30px; font-size: 1.1rem;">
+                            <i class="fas fa-play-circle"></i> Mulai Belajar Sekarang
+                        </a>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2 style="color: var(--primary-color); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-star"></i> Pertemuan Unggulan
+                    </h2>
+                    <div class="featured-meetings" id="featuredMeetings">
+                        <!-- Kartu pertemuan terbaru akan diisi dengan JavaScript -->
+                    </div>
+                </section>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">14</div>
+                        <div>Total Pertemuan</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6+</div>
+                        <div>Studi Kasus</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div>Sumber Belajar</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div>Online Access</div>
+                    </div>
+                </div>
+            </div>
 
-    <h3>Pertemuan 1 – Pengenalan Pemrograman Web</h3>
-    <p>Membahas konsep dasar web, pengertian website, dan perbedaan frontend dan backend.</p>
+            <!-- Halaman Materi (Defaultnya hidden) -->
+            <div id="materiPage" style="display: none;">
+                <!-- Konten materi akan diisi dengan JavaScript -->
+            </div>
 
-    <h3>Pertemuan 2 – HTML Dasar</h3>
-    <p>Mempelajari struktur HTML, tag dasar, dan pembuatan halaman web sederhana.</p>
+            <!-- Halaman Progress -->
+            <div id="progressPage" style="display: none;">
+                <div class="meeting-header">
+                    <h2><i class="fas fa-chart-line"></i> Progress Belajar</h2>
+                </div>
+                <div class="materials">
+                    <div class="material-card">
+                        <h3><i class="fas fa-tasks"></i> Progress Penyelesaian Materi</h3>
+                        <p>Anda telah menyelesaikan <span id="completedCount">0</span> dari 14 pertemuan</p>
+                        <div class="progress-container">
+                            <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <p style="margin-top: 15px; font-weight: 500;" id="progressText">Mulailah belajar dari Pertemuan 1 untuk memulai perjalanan Digital Entrepreneurship Anda!</p>
+                    </div>
+                    <div class="material-card">
+                        <h3><i class="fas fa-calendar-check"></i> Pertemuan yang Telah Diselesaikan</h3>
+                        <div id="completedMeetings" style="margin-top: 15px;">
+                            <p>Belum ada pertemuan yang diselesaikan</p>
+                        </div>
+                    </div>
+                    <div class="material-card">
+                        <h3><i class="fas fa-trophy"></i> Pencapaian</h3>
+                        <div id="achievements" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; margin-top: 15px;">
+                            <!-- Pencapaian akan diisi dengan JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <h3>Pertemuan 3 – CSS Dasar</h3>
-    <p>Membahas styling halaman web menggunakan CSS, warna, font, dan layout.</p>
+            <!-- Halaman Tentang -->
+            <div id="aboutPage" style="display: none;">
+                <div class="meeting-header">
+                    <h2><i class="fas fa-info-circle"></i> Tentang Mata Kuliah</h2>
+                </div>
+                <div class="materials">
+                    <div class="material-card">
+                        <h3><i class="fas fa-book"></i> Deskripsi Mata Kuliah</h3>
+                        <p>Mata kuliah Digital Entrepreneurship membekali mahasiswa dengan pengetahuan, keterampilan, dan mindset kewirausahaan di era digital. Mahasiswa akan mempelajari konsep bisnis digital, identifikasi peluang, pembuatan model bisnis, hingga strategi pemasaran digital untuk startup.</p>
+                    </div>
+                    <div class="material-card">
+                        <h3><i class="fas fa-bullseye"></i> Capaian Pembelajaran</h3>
+                        <p>Setelah menyelesaikan mata kuliah ini, mahasiswa diharapkan mampu:</p>
+                        <ul style="padding-left: 20px; margin-top: 10px;">
+                            <li>Memahami konsep dasar kewirausahaan digital</li>
+                            <li>Mengidentifikasi peluang bisnis di era digital</li>
+                            <li>Membuat business model canvas untuk startup digital</li>
+                            <li>Mengembangkan strategi pemasaran digital yang efektif</li>
+                            <li>Membuat prototype produk atau layanan digital</li>
+                            <li>Menyusun rencana bisnis digital yang feasible</li>
+                        </ul>
+                    </div>
+                    <div class="material-card">
+                        <h3><i class="fas fa-user-graduate"></i> Identitas Mahasiswa</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px;">
+                            <div>
+                                <p><strong>Nama:</strong> Yoga Nugraha</p>
+                                <p><strong>NIM:</strong> 231011402569</p>
+                                <p><strong>Program Studi:</strong> Teknik Informatika</p>
+                            </div>
+                            <div>
+                                <p><strong>Semester:</strong> 5</p>
+                                <p><strong>Mata Kuliah:</strong> Digital Entrepreneurship</p>
+                                <p><strong>Tahun Akademik:</strong> 2025/2026</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <h3>Pertemuan 4 – JavaScript Dasar</h3>
-    <p>Pengenalan JavaScript untuk interaksi sederhana pada halaman web.</p>
+            <!-- Halaman Kontak -->
+            <div id="contactPage" style="display: none;">
+                <div class="meeting-header">
+                    <h2><i class="fas fa-envelope"></i> Kontak & Informasi</h2>
+                </div>
+                <div class="materials">
+                    <div class="material-card">
+                        <h3><i class="fas fa-university"></i> Informasi Perkuliahan</h3>
+                        <p><strong>Dosen Pengampu:</strong> Dr. Siti Nurhaliza, M.M.</p>
+                        <p><strong>Jadwal Perkuliahan:</strong> Selasa & Jumat, 10:00 - 12:00 WIB</p>
+                        <p><strong>Ruang:</strong> Ruang Seminar, Gedung Kewirausahaan</p>
+                        <p><strong>Sistem:</strong> Hybrid (Online & Offline)</p>
+                    </div>
+                    <div class="material-card">
+                        <h3><i class="fas fa-comments"></i> Media Diskusi & Kolaborasi</h3>
+                        <p>Untuk diskusi materi perkuliahan dan kolaborasi project, silakan bergabung dengan platform berikut:</p>
+                        <div class="resources">
+                            <a href="#" class="resource-btn"><i class="fab fa-whatsapp"></i> Grup WhatsApp</a>
+                            <a href="#" class="resource-btn"><i class="fab fa-slack"></i> Slack Channel</a>
+                            <a href="#" class="resource-btn"><i class="fas fa-users"></i> Forum Diskusi</a>
+                            <a href="#" class="resource-btn"><i class="fab fa-github"></i> GitHub Classroom</a>
+                        </div>
+                    </div>
+                    <div class="material-card">
+                        <h3><i class="fas fa-question-circle"></i> Pertanyaan & Konsultasi</h3>
+                        <p>Jika Anda memiliki pertanyaan terkait materi perkuliahan atau konsultasi project, silakan hubungi:</p>
+                        <div class="resources">
+                            <a href="#" class="resource-btn"><i class="fas fa-envelope"></i> Email Dosen</a>
+                            <a href="#" class="resource-btn"><i class="fas fa-calendar-alt"></i> Jam Konsultasi</a>
+                            <a href="#" class="resource-btn"><i class="fas fa-comment-dots"></i> Live Q&A Session</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
-    <h3>Pertemuan 5 – Responsive Web Design</h3>
-    <p>Membuat tampilan website yang responsif menggunakan media query.</p>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Digital Entrepreneurship</h3>
+                    <p>Website penyedia materi perkuliahan untuk mata kuliah Digital Entrepreneurship. Semua materi disajikan secara terstruktur dalam 14 pertemuan.</p>
+                    <p>Website ini dikembangkan sebagai tugas Ujian Akhir Semester oleh Yoga Nugraha.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Kontak Mahasiswa</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-user"></i> Yoga Nugraha</li>
+                        <li><i class="fas fa-id-card"></i> NIM: 231011402569</li>
+                        <li><i class="fas fa-envelope"></i> yoga.nugraha@student.ac.id</li>
+                        <li><i class="fas fa-phone"></i> +62 812 3456 7890</li>
+                        <li><i class="fab fa-linkedin"></i> linkedin.com/in/yoganugraha</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigasi Cepat</h3>
+                    <ul class="contact-list">
+                        <li><i class="fas fa-home"></i> <a href="#" style="color: white;" id="footerHomeLink">Beranda</a></li>
+                        <li><i class="fas fa-book"></i> <a href="#" style="color: white;" id="footerMateriLink">Materi Perkuliahan</a></li>
+                        <li><i class="fas fa-chart-line"></i> <a href="#" style="color: white;" id="footerProgressLink">Progress Belajar</a></li>
+                        <li><i class="fas fa-info-circle"></i> <a href="#" style="color: white;" id="footerAboutLink">Tentang</a></li>
+                        <li><i class="fas fa-download"></i> <a href="#" style="color: white;" id="downloadAllBtn">Download Semua Materi</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Website Materi Perkuliahan Digital Entrepreneurship. Dibuat oleh Yoga Nugraha (231011402569).</p>
+                <p>Website statis ini dibuat dengan HTML, CSS, dan JavaScript tanpa menggunakan database.</p>
+            </div>
+        </div>
+    </footer>
 
-    <h2>Informasi Mahasiswa</h2>
-    <ul>
-        <li>Nama: Yoga Nugraha</li>
-        <li>Program Studi: Teknik Informatika</li>
-        <li>Mata Kuliah: Pemrograman Web</li>
-    </ul>
+    <script>
+        // Data materi perkuliahan Digital Entrepreneurship (14 pertemuan)
+        const meetings = [
+            {
+                id: 1,
+                title: "Pengantar Kewirausahaan Digital",
+                topics: [
+                    "Konsep dasar kewirausahaan di era digital",
+                    "Perbedaan entrepreneurship tradisional vs digital",
+                    "Karakteristik wirausaha digital sukses",
+                    "Trend dan peluang bisnis digital terkini"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Studi Kasus", icon: "fas fa-chart-bar"},
+                    {name: "Video Pengantar", icon: "fas fa-video"},
+                    {name: "Artikel Referensi", icon: "fas fa-newspaper"}
+                ],
+                completed: false
+            },
+            {
+                id: 2,
+                title: "Identifikasi Peluang Bisnis Digital",
+                topics: [
+                    "Teknik menemukan ide bisnis digital",
+                    "Analisis kebutuhan pasar digital",
+                    "Tools untuk penelitian pasar online",
+                    "Validasi awal ide bisnis digital"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Template Analisis", icon: "fas fa-file-alt"},
+                    {name: "Case Study", icon: "fas fa-chart-bar"}
+                ],
+                completed: false
+            },
+            {
+                id: 3,
+                title: "Business Model Canvas untuk Startup Digital",
+                topics: [
+                    "9 elemen Business Model Canvas",
+                    "Mengaplikasikan BMC untuk bisnis digital",
+                    "Contoh BMC startup digital sukses",
+                    "Workshop pembuatan BMC"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Template BMC", icon: "fas fa-file-alt"},
+                    {name: "Contoh Studi Kasus", icon: "fas fa-chart-bar"},
+                    {name: "Video Tutorial", icon: "fas fa-video"}
+                ],
+                completed: false
+            },
+            {
+                id: 4,
+                title: "Lean Startup Methodology",
+                topics: [
+                    "Prinsip-prinsip Lean Startup",
+                    "Build-Measure-Learn feedback loop",
+                    "Minimum Viable Product (MVP)",
+                    "Validated learning dan pivoting"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Studi Kasus MVP", icon: "fas fa-chart-bar"},
+                    {name: "Template Eksperimen", icon: "fas fa-file-alt"}
+                ],
+                completed: false
+            },
+            {
+                id: 5,
+                title: "Design Thinking untuk Inovasi Digital",
+                topics: [
+                    "5 tahap Design Thinking",
+                    "Empathize: memahami pengguna",
+                    "Define: mendefinisikan masalah",
+                    "Ideate: menghasilkan solusi kreatif"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Worksheet Design Thinking", icon: "fas fa-file-alt"},
+                    {name: "Video Tutorial", icon: "fas fa-video"}
+                ],
+                completed: false
+            },
+            {
+                id: 6,
+                title: "Prototyping dan User Testing",
+                topics: [
+                    "Jenis-jenis prototype digital",
+                    "Tools prototyping (Figma, Adobe XD)",
+                    "Metode user testing yang efektif",
+                    "Iterasi berdasarkan feedback pengguna"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Template Figma", icon: "fas fa-palette"},
+                    {name: "Contoh Prototype", icon: "fas fa-laptop-code"}
+                ],
+                completed: false
+            },
+            {
+                id: 7,
+                title: "Digital Marketing Fundamentals",
+                topics: [
+                    "Strategi pemasaran digital terintegrasi",
+                    "Content marketing dan storytelling",
+                    "Search Engine Optimization (SEO)",
+                    "Social media marketing"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Template Strategy", icon: "fas fa-file-alt"},
+                    {name: "Tools SEO", icon: "fas fa-search"},
+                    {name: "Case Study", icon: "fas fa-chart-bar"}
+                ],
+                completed: false
+            },
+            {
+                id: 8,
+                title: "Social Media Strategy",
+                topics: [
+                    "Memilih platform media sosial yang tepat",
+                    "Membangun brand persona di media sosial",
+                    "Content calendar dan planning",
+                    "Analisis metrics dan engagement"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Template Content Calendar", icon: "fas fa-calendar-alt"},
+                    {name: "Analytics Tools", icon: "fas fa-chart-line"}
+                ],
+                completed: false
+            },
+            {
+                id: 9,
+                title: "E-commerce dan Marketplace Strategy",
+                topics: [
+                    "Model bisnis e-commerce",
+                    "Strategi di marketplace (Shopee, Tokopedia)",
+                    "Logistik dan fulfillment",
+                    "Customer service online"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Studi Kasus Marketplace", icon: "fas fa-chart-bar"},
+                    {name: "Checklist E-commerce", icon: "fas fa-file-alt"}
+                ],
+                completed: false
+            },
+            {
+                id: 10,
+                title: "Monetization dan Revenue Model Digital",
+                topics: [
+                    "Berbagai model pendapatan digital",
+                    "Freemium vs subscription model",
+                    "In-app purchases dan microtransactions",
+                    "Affiliate marketing dan sponsorship"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Analisis Model Revenue", icon: "fas fa-chart-bar"},
+                    {name: "Template Financial Projection", icon: "fas fa-file-alt"}
+                ],
+                completed: false
+            },
+            {
+                id: 11,
+                title: "Funding untuk Startup Digital",
+                topics: [
+                    "Bootstrapping vs external funding",
+                    "Jenis investor: angel, VC, crowdfunding",
+                    "Menyiapkan pitch deck yang menarik",
+                    "Valuation startup digital"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Template Pitch Deck", icon: "fas fa-file-alt"},
+                    {name: "Studi Kasus Funding", icon: "fas fa-chart-bar"}
+                ],
+                completed: false
+            },
+            {
+                id: 12,
+                title: "Legal Aspect dan Intellectual Property",
+                topics: [
+                    "Bentuk badan usaha untuk startup",
+                    "Perlindungan hak kekayaan intelektual",
+                    "Privacy policy dan terms of service",
+                    "Regulasi bisnis digital di Indonesia"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Template Legal Doc", icon: "fas fa-file-contract"},
+                    {name: "Studi Kasus IP", icon: "fas fa-chart-bar"}
+                ],
+                completed: false
+            },
+            {
+                id: 13,
+                title: "Scaling dan Growth Strategy",
+                topics: [
+                    "Growth hacking techniques",
+                    "Strategi akuisisi pengguna",
+                    "Retention dan customer lifetime value",
+                    "Ekspansi ke pasar internasional"
+                ],
+                resources: [
+                    {name: "Slide Presentasi", icon: "fas fa-file-powerpoint"},
+                    {name: "Growth Framework", icon: "fas fa-chart-line"},
+                    {name: "Case Study Scaling", icon: "fas fa-chart-bar"}
+                ],
+                completed: false
+            },
+            {
+                id: 14,
+                title: "Presentasi Final Business Plan",
+                topics: [
+                    "Struktur business plan yang komprehensif",
+                    "Teknik presentasi yang efektif",
+                    "Q&A session dan handling objections",
+                    "Next steps setelah presentasi"
+                ],
+                resources: [
+                    {name: "Template Business Plan", icon: "fas fa-file-alt"},
+                    {name: "Tips Presentasi", icon: "fas fa-presentation"},
+                    {name: "Rubrik Penilaian", icon: "fas fa-clipboard-check"}
+                ],
+                completed: false
+            }
+        ];
 
-    <h2>Kontak</h2>
-    <p>Email: yoga.nugraha@example.com</p>
-    <p>GitHub: <a href="https://github.com/username" target="_blank">github.com/username</a></p>
-</div>
+        // Elemen DOM
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const closeMenu = document.getElementById('closeMenu');
+        const overlay = document.getElementById('overlay');
+        const meetingList = document.getElementById('meetingList');
+        const contentArea = document.getElementById('contentArea');
+        const materiPage = document.getElementById('materiPage');
+        const homePage = document.getElementById('homePage');
+        const progressPage = document.getElementById('progressPage');
+        const aboutPage = document.getElementById('aboutPage');
+        const contactPage = document.getElementById('contactPage');
+        const sidebar = document.getElementById('sidebar');
+        const homeLink = document.getElementById('homeLink');
+        const materiLink = document.getElementById('materiLink');
+        const progressLink = document.getElementById('progressLink');
+        const aboutLink = document.getElementById('aboutLink');
+        const contactLink = document.getElementById('contactLink');
+        const startLearningBtn = document.getElementById('startLearningBtn');
+        const featuredMeetings = document.getElementById('featuredMeetings');
+        const footerHomeLink = document.getElementById('footerHomeLink');
+        const footerMateriLink = document.getElementById('footerMateriLink');
+        const footerProgressLink = document.getElementById('footerProgressLink');
+        const footerAboutLink = document.getElementById('footerAboutLink');
+        const downloadAllBtn = document.getElementById('downloadAllBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const completedCount = document.getElementById('completedCount');
+        const completedMeetings = document.getElementById('completedMeetings');
+        const achievements = document.getElementById('achievements');
 
-<footer>
-    <p>&copy; 2024 Yoga Nugraha - UAS Pemrograman Web</p>
-</footer>
+        // State aplikasi
+        let currentPage = 'home';
+        let currentMeetingId = 1;
+        let completedMeetingsList = JSON.parse(localStorage.getItem('completedMeetings')) || [];
 
+        // Inisialisasi
+        document.addEventListener('DOMContentLoaded', function() {
+            renderMeetingList();
+            renderFeaturedMeetings();
+            updateProgress();
+            showHomePage();
+            setupEventListeners();
+        });
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Toggle menu mobile
+            menuToggle.addEventListener('click', openMobileMenu);
+            closeMenu.addEventListener('click', closeMobileMenu);
+            overlay.addEventListener('click', closeMobileMenu);
+            
+            // Navigasi
+            homeLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showHomePage();
+                closeMobileMenu();
+            });
+            
+            materiLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showMateriPage(1);
+                closeMobileMenu();
+            });
+            
+            progressLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showProgressPage();
+                closeMobileMenu();
+            });
+            
+            aboutLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showAboutPage();
+                closeMobileMenu();
+            });
+            
+            contactLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showContactPage();
+                closeMobileMenu();
+            });
+            
+            // Footer navigation
+            footerHomeLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showHomePage();
+            });
+            
+            footerMateriLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showMateriPage(1);
+            });
+            
+            footerProgressLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showProgressPage();
+            });
+            
+            footerAboutLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showAboutPage();
+            });
+            
+            // Tombol mulai belajar
+            startLearningBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showMateriPage(1);
+            });
+            
+            // Tombol download semua materi
+            downloadAllBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Fitur download semua materi akan segera tersedia!');
+            });
+        }
+
+        // Render daftar pertemuan di sidebar (sekarang di kiri)
+        function renderMeetingList() {
+            meetingList.innerHTML = '';
+            
+            meetings.forEach(meeting => {
+                const li = document.createElement('li');
+                li.className = `meeting-item ${meeting.id === currentMeetingId ? 'active' : ''}`;
+                if (completedMeetingsList.includes(meeting.id)) {
+                    li.classList.add('completed');
+                }
+                li.innerHTML = `
+                    <a href="#" data-id="${meeting.id}">
+                        <div class="meeting-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 600; font-size: 0.9rem;">Pertemuan ${meeting.id}</div>
+                            <div class="meeting-title">${meeting.title}</div>
+                            ${completedMeetingsList.includes(meeting.id) ? 
+                                '<div style="font-size: 0.8rem; color: #4CAF50; margin-top: 5px;"><i class="fas fa-check-circle"></i> Selesai</div>' : 
+                                ''}
+                        </div>
+                    </a>
+                `;
+                meetingList.appendChild(li);
+                
+                // Tambahkan event listener untuk setiap item pertemuan
+                li.querySelector('a').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const id = parseInt(this.getAttribute('data-id'));
+                    showMateriPage(id);
+                    closeMobileMenu();
+                });
+            });
+        }
+
+        // Render kartu pertemuan terbaru di halaman beranda
+        function renderFeaturedMeetings() {
+            featuredMeetings.innerHTML = '';
+            
+            // Ambil 4 pertemuan dengan ID ganjil sebagai featured
+            const featured = meetings.filter(m => m.id % 2 !== 0).slice(0, 4);
+            
+            featured.forEach(meeting => {
+                const card = document.createElement('div');
+                card.className = 'featured-card';
+                card.innerHTML = `
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Pertemuan ${meeting.id}</h3>
+                    <p><strong>${meeting.title}</strong></p>
+                    <p>${meeting.topics.slice(0, 2).join(', ')}...</p>
+                    <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                        <a href="#" class="resource-btn" data-id="${meeting.id}">
+                            <i class="fas fa-book-open"></i> Buka Materi
+                        </a>
+                        ${completedMeetingsList.includes(meeting.id) ? 
+                            '<span style="color: #4CAF50; font-weight: 600;"><i class="fas fa-check-circle"></i> Selesai</span>' : 
+                            '<span style="color: #FF9800; font-weight: 600;"><i class="fas fa-clock"></i> Belum</span>'}
+                    </div>
+                `;
+                featuredMeetings.appendChild(card);
+                
+                // Tambahkan event listener untuk tombol "Buka Materi"
+                card.querySelector('a').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const id = parseInt(this.getAttribute('data-id'));
+                    showMateriPage(id);
+                });
+            });
+        }
+
+        // Tampilkan halaman beranda
+        function showHomePage() {
+            currentPage = 'home';
+            homePage.style.display = 'block';
+            materiPage.style.display = 'none';
+            progressPage.style.display = 'none';
+            aboutPage.style.display = 'none';
+            contactPage.style.display = 'none';
+            sidebar.style.display = 'none';
+            
+            // Update active link di navbar
+            updateActiveNavLink('home');
+            
+            // Sembunyikan sidebar di halaman beranda
+            const mainContent = document.querySelector('.main-content');
+            mainContent.style.gridTemplateColumns = '1fr';
+        }
+
+        // Tampilkan halaman materi dengan pertemuan tertentu
+        function showMateriPage(meetingId = 1) {
+            currentPage = 'materi';
+            currentMeetingId = meetingId;
+            homePage.style.display = 'none';
+            materiPage.style.display = 'block';
+            progressPage.style.display = 'none';
+            aboutPage.style.display = 'none';
+            contactPage.style.display = 'none';
+            sidebar.style.display = 'block';
+            
+            // Update layout grid untuk sidebar kiri dan konten kanan
+            const mainContent = document.querySelector('.main-content');
+            mainContent.style.gridTemplateColumns = '300px 1fr';
+            
+            // Update active link di navbar
+            updateActiveNavLink('materi');
+            
+            // Render konten materi untuk pertemuan yang dipilih
+            renderMateriContent(meetingId);
+            
+            // Update active item di daftar pertemuan
+            updateActiveMeetingItem(meetingId);
+        }
+
+        // Tampilkan halaman progress
+        function showProgressPage() {
+            currentPage = 'progress';
+            homePage.style.display = 'none';
+            materiPage.style.display = 'none';
+            progressPage.style.display = 'block';
+            aboutPage.style.display = 'none';
+            contactPage.style.display = 'none';
+            sidebar.style.display = 'none';
+            
+            // Update active link di navbar
+            updateActiveNavLink('progress');
+            
+            // Update progress display
+            updateProgress();
+            
+            // Update layout grid
+            const mainContent = document.querySelector('.main-content');
+            mainContent.style.gridTemplateColumns = '1fr';
+        }
+
+        // Tampilkan halaman tentang
+        function showAboutPage() {
+            currentPage = 'about';
+            homePage.style.display = 'none';
+            materiPage.style.display = 'none';
+            progressPage.style.display = 'none';
+            aboutPage.style.display = 'block';
+            contactPage.style.display = 'none';
+            sidebar.style.display = 'none';
+            
+            // Update active link di navbar
+            updateActiveNavLink('about');
+            
+            // Update layout grid
+            const mainContent = document.querySelector('.main-content');
+            mainContent.style.gridTemplateColumns = '1fr';
+        }
+
+        // Tampilkan halaman kontak
+        function showContactPage() {
+            currentPage = 'contact';
+            homePage.style.display = 'none';
+            materiPage.style.display = 'none';
+            progressPage.style.display = 'none';
+            aboutPage.style.display = 'none';
+            contactPage.style.display = 'block';
+            sidebar.style.display = 'none';
+            
+            // Update active link di navbar
+            updateActiveNavLink('contact');
+            
+            // Update layout grid
+            const mainContent = document.querySelector('.main-content');
+            mainContent.style.gridTemplateColumns = '1fr';
+        }
+
+        // Render konten materi berdasarkan pertemuan
+        function renderMateriContent(meetingId) {
+            const meeting = meetings.find(m => m.id === meetingId);
+            if (!meeting) return;
+            
+            materiPage.innerHTML = `
+                <div class="meeting-header">
+                    <h2><i class="fas fa-chalkboard-teacher"></i> ${meeting.title}</h2>
+                    <div class="meeting-number">Pertemuan ${meeting.id}</div>
+                </div>
+                <div class="materials">
+                    <div class="material-card">
+                        <h3><i class="fas fa-list"></i> Topik Pembahasan</h3>
+                        <ul style="padding-left: 20px; margin-top: 10px;">
+                            ${meeting.topics.map(topic => `<li>${topic}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="material-card">
+                        <h3><i class="fas fa-book"></i> Deskripsi Materi</h3>
+                        <p>Pada pertemuan ke-${meeting.id} mata kuliah Digital Entrepreneurship, kita akan mempelajari ${meeting.title.toLowerCase()}. Materi ini merupakan bagian penting dalam pengembangan keterampilan kewirausahaan di era digital.</p>
+                        <p>Setelah menyelesaikan pertemuan ini, Anda diharapkan dapat memahami konsep-konsep kunci dan mengaplikasikannya dalam konteks bisnis digital yang nyata.</p>
+                    </div>
+                    <div class="material-card">
+                        <h3><i class="fas fa-download"></i> Materi dan Sumber Belajar</h3>
+                        <p>Berikut adalah sumber belajar yang dapat Anda gunakan untuk memahami materi pertemuan ini:</p>
+                        <div class="resources">
+                            ${meeting.resources.map(resource => `
+                                <a href="#" class="resource-btn">
+                                    <i class="${resource.icon}"></i> ${resource.name}
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="material-card">
+                        <h3><i class="fas fa-tasks"></i> Tugas dan Latihan</h3>
+                        <p>Untuk menguji pemahaman Anda tentang materi pertemuan ini, kerjakan latihan berikut:</p>
+                        <div class="resources">
+                            <a href="#" class="resource-btn"><i class="fas fa-file-alt"></i> Worksheet</a>
+                            <a href="#" class="resource-btn"><i class="fas fa-question-circle"></i> Kuis Singkat</a>
+                            <a href="#" class="resource-btn"><i class="fas fa-project-diagram"></i> Studi Kasus</a>
+                        </div>
+                        <div style="margin-top: 25px; padding: 15px; background: #f1f8e9; border-radius: 8px; border-left: 4px solid #4CAF50;">
+                            <h4 style="color: #2E7D32; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-check-circle"></i> Tandai sebagai Selesai
+                            </h4>
+                            <p style="margin-bottom: 15px;">Jika Anda telah memahami materi pertemuan ini, tandai sebagai selesai untuk melacak progress belajar Anda.</p>
+                            <button id="markCompleteBtn" class="resource-btn" style="background: ${completedMeetingsList.includes(meetingId) ? '#4CAF50' : 'var(--gradient-primary)'}; color: white; border: none;">
+                                <i class="fas fa-${completedMeetingsList.includes(meetingId) ? 'check' : 'check-circle'}"></i> 
+                                ${completedMeetingsList.includes(meetingId) ? 'Sudah Selesai' : 'Tandai sebagai Selesai'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="meeting-navigation">
+                    <button class="nav-btn prev" id="prevBtn" ${meetingId === 1 ? 'disabled' : ''}>
+                        <i class="fas fa-arrow-left"></i> Pertemuan Sebelumnya
+                    </button>
+                    <button class="nav-btn next" id="nextBtn" ${meetingId === meetings.length ? 'disabled' : ''}>
+                        Pertemuan Selanjutnya <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            `;
+            
+            // Tambahkan event listener untuk tombol tandai selesai
+            const markCompleteBtn = document.getElementById('markCompleteBtn');
+            if (markCompleteBtn) {
+                markCompleteBtn.addEventListener('click', function() {
+                    toggleMeetingCompletion(meetingId);
+                });
+            }
+            
+            // Tambahkan event listener untuk tombol navigasi
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function() {
+                    if (meetingId > 1) {
+                        showMateriPage(meetingId - 1);
+                    }
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    if (meetingId < meetings.length) {
+                        showMateriPage(meetingId + 1);
+                    }
+                });
+            }
+        }
+
+        // Update active item di daftar pertemuan
+        function updateActiveMeetingItem(meetingId) {
+            const meetingItems = document.querySelectorAll('.meeting-item');
+            meetingItems.forEach(item => {
+                item.classList.remove('active');
+                const itemId = parseInt(item.querySelector('a').getAttribute('data-id'));
+                if (itemId === meetingId) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Update active link di navbar
+        function updateActiveNavLink(page) {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            if (page === 'home') homeLink.classList.add('active');
+            if (page === 'materi') materiLink.classList.add('active');
+            if (page === 'progress') progressLink.classList.add('active');
+            if (page === 'about') aboutLink.classList.add('active');
+            if (page === 'contact') contactLink.classList.add('active');
+        }
+
+        // Toggle penyelesaian pertemuan
+        function toggleMeetingCompletion(meetingId) {
+            const index = completedMeetingsList.indexOf(meetingId);
+            
+            if (index === -1) {
+                // Tambahkan ke daftar selesai
+                completedMeetingsList.push(meetingId);
+                alert(`Pertemuan ${meetingId} berhasil ditandai sebagai selesai!`);
+            } else {
+                // Hapus dari daftar selesai
+                completedMeetingsList.splice(index, 1);
+                alert(`Pertemuan ${meetingId} diubah menjadi belum selesai.`);
+            }
+            
+            // Simpan ke localStorage
+            localStorage.setItem('completedMeetings', JSON.stringify(completedMeetingsList));
+            
+            // Update UI
+            renderMateriContent(meetingId);
+            renderMeetingList();
+            renderFeaturedMeetings();
+            updateProgress();
+        }
+
+        // Update progress belajar
+        function updateProgress() {
+            const totalMeetings = meetings.length;
+            const completed = completedMeetingsList.length;
+            const percentage = Math.round((completed / totalMeetings) * 100);
+            
+            // Update progress bar
+            progressBar.style.width = `${percentage}%`;
+            
+            // Update teks progress
+            completedCount.textContent = completed;
+            
+            if (completed === 0) {
+                progressText.textContent = "Mulailah belajar dari Pertemuan 1 untuk memulai perjalanan Digital Entrepreneurship Anda!";
+            } else if (completed < totalMeetings / 2) {
+                progressText.textContent = `Lanjutkan! Anda sudah menyelesaikan ${completed} dari ${totalMeetings} pertemuan.`;
+            } else if (completed === totalMeetings) {
+                progressText.textContent = "Selamat! Anda telah menyelesaikan semua materi Digital Entrepreneurship!";
+            } else {
+                progressText.textContent = `Hebat! Anda sudah menyelesaikan ${completed} dari ${totalMeetings} pertemuan.`;
+            }
+            
+            // Update daftar pertemuan yang selesai
+            updateCompletedMeetingsList();
+            
+            // Update achievements
+            updateAchievements();
+        }
+
+        // Update daftar pertemuan yang selesai
+        function updateCompletedMeetingsList() {
+            completedMeetings.innerHTML = '';
+            
+            if (completedMeetingsList.length === 0) {
+                completedMeetings.innerHTML = '<p>Belum ada pertemuan yang diselesaikan</p>';
+                return;
+            }
+            
+            const ul = document.createElement('ul');
+            ul.style.paddingLeft = '20px';
+            
+            completedMeetingsList.sort((a, b) => a - b).forEach(id => {
+                const meeting = meetings.find(m => m.id === id);
+                const li = document.createElement('li');
+                li.style.marginBottom = '10px';
+                li.innerHTML = `<i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 8px;"></i> Pertemuan ${id}: ${meeting.title}`;
+                ul.appendChild(li);
+            });
+            
+            completedMeetings.appendChild(ul);
+        }
+
+        // Update achievements
+        function updateAchievements() {
+            achievements.innerHTML = '';
+            
+            const achievementList = [
+                { id: 1, name: "Pemula", desc: "Mulai belajar", icon: "fas fa-seedling", condition: (completed) => completed >= 1 },
+                { id: 2, name: "Pencari Ilmu", desc: "5 pertemuan selesai", icon: "fas fa-graduation-cap", condition: (completed) => completed >= 5 },
+                { id: 3, name: "Entrepreneur", desc: "10 pertemuan selesai", icon: "fas fa-rocket", condition: (completed) => completed >= 10 },
+                { id: 4, name: "Master", desc: "Semua pertemuan selesai", icon: "fas fa-trophy", condition: (completed) => completed >= 14 }
+            ];
+            
+            achievementList.forEach(achievement => {
+                const completed = completedMeetingsList.length;
+                const achieved = achievement.condition(completed);
+                
+                const div = document.createElement('div');
+                div.style.textAlign = 'center';
+                div.style.padding = '15px';
+                div.style.borderRadius = '10px';
+                div.style.background = achieved ? 'linear-gradient(135deg, #FFD700, #FFC107)' : '#f0f0f0';
+                div.style.color = achieved ? '#333' : '#999';
+                div.innerHTML = `
+                    <i class="${achievement.icon}" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <div style="font-weight: 600;">${achievement.name}</div>
+                    <div style="font-size: 0.8rem; margin-top: 5px;">${achievement.desc}</div>
+                    ${achieved ? '<div style="color: #4CAF50; font-size: 0.8rem; margin-top: 5px;"><i class="fas fa-check"></i> Dicapai</div>' : ''}
+                `;
+                achievements.appendChild(div);
+            });
+        }
+
+        // Mobile menu functions
+        function openMobileMenu() {
+            navLinks.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            navLinks.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 </body>
 </html>
-
